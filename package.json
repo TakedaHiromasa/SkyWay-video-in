@@ -1,0 +1,32 @@
+{
+  "name": "red-contrib-skyway",
+  "version": "0.0.1",
+  "description": "Add SkyWay p2p videochat to the Web",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "skyway-p2p": "nodes/skyway-p2p"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakedaHiromasa/node-red-contrib-SkyWay.git"
+  },
+  "keywords": [
+    "SkyWay"
+  ],
+  "author": "Takeda Hiromasa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TakedaHiromasa/node-red-contrib-SkyWay/issues"
+  },
+  "homepage": "https://github.com/TakedaHiromasa/node-red-contrib-SkyWay#readme"
+}

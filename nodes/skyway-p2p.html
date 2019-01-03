@@ -1,0 +1,70 @@
+<script type="text/javascript">
+    RED.nodes.registerType('skyway-p2p',{ //ノードタイプ ...①
+        category: 'SkyWay', //ノードカテゴリ ... ②
+        color: '#3FADB5', // ノード色 ... ③
+        defaults: {
+            name: {value:""}, // 編集可能プロパティ ... ④
+            key: {value:""},
+            peerId: {value:""},
+            autoCall: {value:false},
+            debug: {value:3},
+            width: {value:320},
+            height: {value:240}
+        },
+        inputs:1, //ノード入力(0 or 1) ... ⑤
+        outputs:2,//ノード出力(0 or more) ... ⑥
+        icon: "bridge.png", // ノードアイコン ... ⑦
+        label: function() {
+            return this.name||"skyway p2p"; // ノードラベル ... ⑧
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="skyway-p2p">
+    <div class="form-row">
+        <!-- APIKey -->
+        <label for="node-input-key"><i class="fa fa-key fa-fw"></i> API key</label>
+        <input type="text" id="node-input-key" placeholder="API key">
+    </div>
+
+    <div class="form-row">
+        <!-- PeerId -->
+        <label for="node-input-peerId"><i class="fa fa-id-card-o fa-fw"></i> Peer id</label>
+        <input type="text" id="node-input-peerId" placeholder="Peer id">
+    </div>
+
+    <div class="form-row">
+        <!-- AutoCall -->
+        <label for="node-input-autoCall"><i class="fa fa-volume-control-phone fa-fw"></i> Auto call</label>
+        <input type="checkbox" id="node-input-autoCall" style="display:inline-block; width:auto; vertical-align:top;">
+        &nbsp;リクエストが来たら自動でCallします。
+    </div>
+
+    <div class="form-row">
+        <!-- Debug -->
+        <label for="node-input-debug"><i class="fa fa-bug fa-fw"></i> Debug level</label>
+        <select id="node-input-debug" placeholder="debug">
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <!-- Video size -->
+        <label for="node-input-width"><i class="fa fa-television fa-fw"></i> Video size</label>
+        <input type="text" id="node-input-width" placeholder="width" style="width:70px;">&nbsp;x
+        <input type="text" id="node-input-height" placeholder="height" style="width:70px;">
+    </div>
+
+    <div class="form-row">
+        <!-- Name -->
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="skyway-p2p">
+    <p>Add SkyWay p2p videochat to the Web.</p>
+</script>
