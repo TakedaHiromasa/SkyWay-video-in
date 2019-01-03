@@ -165,7 +165,7 @@ $(function() {
 
   function postPeer(peer) {
     var JSONdata = {
-      peerId: peer.id
+      myPeerId: peer.id
     };
 
     $.ajax({

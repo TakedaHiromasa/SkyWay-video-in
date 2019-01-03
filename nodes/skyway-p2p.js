@@ -30,7 +30,7 @@ module.exports = function(RED) {
 
     RED.httpNode.post('/peer', function(req, res) {
       var msg = {};
-      msg.payload = req.body.peerId;
+      msg.payload = req.body.myPeerId;
       node.send([null, msg]);
 
       var rejson = JSON.stringify(req.body);

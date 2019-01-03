@@ -1,27 +1,42 @@
 <script type="text/javascript">
-    RED.nodes.registerType('skyway-p2p',{ //ノードタイプ ...①
-        category: 'SkyWay', //ノードカテゴリ ... ②
-        color: '#3FADB5', // ノード色 ... ③
-        defaults: {
-            name: {value:""}, // 編集可能プロパティ ... ④
-            key: {value:""},
-            peerId: {value:""},
-            autoCall: {value:false},
-            debug: {value:3},
-            width: {value:320},
-            height: {value:240}
-        },
-        inputs:1, //ノード入力(0 or 1) ... ⑤
-        outputs:2,//ノード出力(0 or more) ... ⑥
-        icon: "bridge.png", // ノードアイコン ... ⑦
-        label: function() {
-            return this.name||"skyway p2p"; // ノードラベル ... ⑧
-        }
-    });
+  RED.nodes.registerType('skyway-p2p', { //ノードタイプ ...①
+    category: 'SkyWay', //ノードカテゴリ ... ②
+    color: '#3FADB5', // ノード色 ... ③
+    defaults: {
+      name: {
+        value: ""
+      }, // 編集可能プロパティ ... ④
+      key: {
+        value: ""
+      },
+      peerId: {
+        value: ""
+      },
+      autoCall: {
+        value: false
+      },
+      debug: {
+        value: 3
+      },
+      width: {
+        value: 320
+      },
+      height: {
+        value: 240
+      }
+    },
+    inputs: 1, //ノード入力(0 or 1) ... ⑤
+    outputs: 2, //ノード出力(0 or more) ... ⑥
+    outputLabels: ["htmlout", "peerId"],
+    icon: "bridge.png", // ノードアイコン ... ⑦
+    label: function() {
+      return this.name || "skyway p2p"; // ノードラベル ... ⑧
+    }
+  });
 </script>
 
 <script type="text/x-red" data-template-name="skyway-p2p">
-    <div class="form-row">
+  <div class="form-row">
         <!-- APIKey -->
         <label for="node-input-key"><i class="fa fa-key fa-fw"></i> API key</label>
         <input type="text" id="node-input-key" placeholder="API key">
@@ -66,5 +81,46 @@
 </script>
 
 <script type="text/x-red" data-help-name="skyway-p2p">
-    <p>Add SkyWay p2p videochat to the Web.</p>
+  <p>Add SkyWay p2p videochat to the Web.</p>
+  <p>SkyWayを利用したp2p videochatをweb上に構築します。</br>
+  事前にSkyWayの<code>APIキー</code>を発行してください。</br>
+  また、SkyWayの<code>利用可能ドメイン</code>にデプロイ先のホスト名を追加してください。
+  </p>
+
+  <h3>入力</h3>
+  <dl class="message-properties">
+      <dd>http GET リクエストを入力とします。<br>
+      <b>必ずHTTP Inノードをフローに含めてください。</b></dd>
+      <dt class="optional">req <span class="property-type">object</span></dt>
+      <dd>HTTPリクエストオブジェクト。</dd>
+      <dt class="optional">res <span class="property-type">object</span></dt>
+      <dd>HTTPレスポンスオブジェクト。</dd>
+  </dl>
+
+  <h3>出力</h3>
+  <ol class="node-ports">
+        <li>HTMLテキスト (htmlout)
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>SkyWay P2P video chat を構成する雛形htmlを出力します。</dd>
+                <dd>雛形は<code>&lt;div class="SkyWay-area"&gt;</code>で囲われた形でbodyにつかされます。</dd>
+            </dl>
+        </li>
+        <li>自身のPeerId (myPeerId)
+            <dl class="message-properties">
+                <dt>payload <span class="property-type">string</span></dt>
+                <dd>getリクエストをトリガーに、自身のPeerIdを出力します。</dd>
+            </dl>
+        </li>
+    </ol>
+
+    <h3>詳細</h3>
+    <dl class="message-properties">
+        <dd>このノードは<code>http In</code>で<b>指定した以外</b>のいくつかのエンドポイントを使用します。</br>
+        エンドポイントが競合しないよう注意してください。</dd>
+        </br>
+        <dd><b>使用するエンドポイント</b></dd>
+        <dd><code>/js/SkyWay.js</code></dd>
+        <dd><code>/peer</code></dd>
+    </dl>
 </script>
