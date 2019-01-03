@@ -40,7 +40,7 @@ module.exports = function(RED) {
       var head = "";
       head += "var key=" + JSON.stringify(key);
       head += "\nvar opt=" + JSON.stringify(opt);
-      res.send(head + fs.readFileSync('skyway.js', 'utf-8'));
+      res.send(head + fs.readFileSync('src/skyway.js', 'utf-8'));
     });
 
     // RED.httpNode.get('/style.css', function(req, res) {
@@ -48,7 +48,7 @@ module.exports = function(RED) {
     // });
 
     this.on('input', function(msg) {
-      msg.payload = fs.readFileSync('skyway.html', 'utf-8');
+      msg.payload = fs.readFileSync('src/skyway.html', 'utf-8');
       node.send([msg, null]);
     });
 
