@@ -1,3 +1,4 @@
+module.exports = `
 
 /* eslint-disable require-jsdoc */
 $(function() {
@@ -182,3 +183,5 @@ $(function() {
     });
   }
 });
+
+`;

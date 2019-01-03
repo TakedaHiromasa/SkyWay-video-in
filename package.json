@@ -13,7 +13,7 @@
   },
   "node-red": {
     "nodes": {
-      "skyway-p2p": "nodes/skyway-p2p"
+      "skyway-p2p": "nodes/skyway-p2p.js"
     }
   },
   "repository": {

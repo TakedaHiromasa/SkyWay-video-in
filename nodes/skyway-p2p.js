@@ -1,6 +1,7 @@
 module.exports = function(RED) {
   "use strict";
-  var fs = require('fs');
+  var jscode = require('../src/jscode');
+  var htmlcode = require('../src/htmlcode');
 
   var key = {
     key: "",
@@ -40,7 +41,7 @@ module.exports = function(RED) {
       var head = "";
       head += "var key=" + JSON.stringify(key);
       head += "\nvar opt=" + JSON.stringify(opt);
-      res.send(head + fs.readFileSync('src/skyway.js', 'utf-8'));
+      res.send(head + jscode);
     });
 
     // RED.httpNode.get('/style.css', function(req, res) {
@@ -48,7 +49,7 @@ module.exports = function(RED) {
     // });
 
     this.on('input', function(msg) {
-      msg.payload = fs.readFileSync('src/skyway.html', 'utf-8');
+      msg.payload = htmlcode;
       node.send([msg, null]);
     });
 

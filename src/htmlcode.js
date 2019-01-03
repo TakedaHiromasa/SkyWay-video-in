@@ -1,3 +1,5 @@
+module.exports = `
+
 <html>
 
 <head>
@@ -48,3 +50,5 @@
 </body>
 
 </html>
+
+`;
